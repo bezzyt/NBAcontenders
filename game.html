@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Are You A Contender?</title>
+  <style>
+    body {
+      text-align: center;
+      background-color: #f0f0f0;
+      font-family: Arial;
+    }
+    #game {
+      position: relative;
+      width: 400px;
+      height: 600px;
+      margin: 40px auto;
+      background: #a2d2ff;
+      border: 3px solid #333;
+      overflow: hidden;
+    }
+    #hoop {
+      width: 100px;
+      height: 20px;
+      background: red;
+      position: absolute;
+      top: 50px;
+      left: 150px;
+      border-radius: 10px;
+    }
+    #ball {
+      width: 40px;
+      height: 40px;
+      background: orange;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 20px;
+      left: 180px;
+      cursor: pointer;
+    }
+    #score {
+      margin-top: 10px;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Are You A Contender? </h1>
+  <a href="scratch.html" >Home</a>
+  <div id="game">
+    <div id="hoop"></div>
+    <div id="ball"></div>
+  </div>
+  <div id="score">Score: 0</div>
+
+  <script>
+    const ball = document.getElementById('ball');
+    const hoop = document.getElementById('hoop');
+    const scoreDisplay = document.getElementById('score');
+    let score = 0;
+
+    ball.addEventListener('click', () => {
+      // Animate the ball up
+      ball.style.transition = 'all 0.8s ease';
+      ball.style.bottom = '400px';
+      
+      // Check if it makes the basket
+      setTimeout(() => {
+        const madeShot = Math.random() > 0.4; // 60% chance
+        if (madeShot) {
+          score++;
+          scoreDisplay.textContent = `Score: ${score}`;
+        } else {
+          alert("Miss!");
+        }
+
+        // Reset ball
+        ball.style.transition = 'none';
+        ball.style.bottom = '20px';
+      }, 900);
+    });
+  </script>
+
+</body>
+</html>
